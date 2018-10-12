@@ -1,5 +1,5 @@
 - hosts: all
 
   tasks:
-    - name: Run test
-      command: 'echo hi'
+    - name: Run
+      command: pwd
