@@ -1,11 +1,21 @@
+---
+- nodeset:
+    name: ansible-centos
+    nodes:
+      - name: static
+        label: ansible-centos
+
 - job:
-    name: testjob
+    name: run-tests
+    pre-run: playbooks/pre.yaml
+    post-run: playbooks/post.yaml
     run: playbooks/testjob.yaml
+    nodeset: ansible-centos
 
 - project:
     check:
       jobs:
-        - testjob
+        - run-tests
     gate:
       jobs:
-        - testjob
+        - run-tests
